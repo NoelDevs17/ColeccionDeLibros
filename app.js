@@ -36,10 +36,18 @@ class UI{
 
 class Datos {
     static traerLibros(){
-
+        let libros;
+        if(localStorage.setItem('libros') === null){
+            libros = [];
+        }else{
+            libros = JSON.parse(localStorage.getItem('libros'));
+        }
     }
 
     static agregarLibro(libro){
+        const libros = Datos.traerLibros();
+        libros.push(libro);
+        localStorage.setItem('libros', JSON.stringify(libros));
 
     }
 
@@ -60,7 +68,13 @@ document.querySelector('#libro-form').addEventListener('submit', (e) => {
 
     if(titulo === '' || autor === '' || isbn === '' ){
         UI.mostrarAlerta('Por favor ingrese todos los datos','danger');
+    }else{
+        const libro = new Libro(titulo,autor,isbn);
+        Datos.agregarLibro(libro);
+
     }
+
+
 
     });
 

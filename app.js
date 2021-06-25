@@ -39,3 +39,8 @@ class Datos {
         
     }
 }
+
+//controlar event submit
+document.querySelector('#libro-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+});

@@ -37,11 +37,12 @@ class UI{
 class Datos {
     static traerLibros(){
         let libros;
-        if(localStorage.setItem('libros') === null){
+        if(localStorage.getItem('libros') === null){
             libros = [];
         }else{
             libros = JSON.parse(localStorage.getItem('libros'));
         }
+        return libros;
     }
 
     static agregarLibro(libro){

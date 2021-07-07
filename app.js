@@ -30,7 +30,9 @@ class UI{
     }
 
     static limpiarCampos(){
-
+        document.querySelector('#titulo').value = '';
+        document.querySelector('#autor').value = '';
+        document.querySelector('#isbn').value = '';
     }
 }
 
@@ -72,6 +74,7 @@ document.querySelector('#libro-form').addEventListener('submit', (e) => {
     }else{
         const libro = new Libro(titulo,autor,isbn);
         Datos.agregarLibro(libro);
+        UI.limpiarCampos();
 
     }
 
